@@ -1,4 +1,4 @@
-# BASE DE DATOS Agencia de Viajes
+# Agencia de Viajes
 Trabajo colaborativo de la materia de Base de Datos.
 ---
 
@@ -6,7 +6,7 @@ Trabajo colaborativo de la materia de Base de Datos.
 
 ### ¡Ejercicio 5!
 
-A partir del siguiente enunciado, diseñar una base de datos.
+A partir del siguiente enunciado, se diseñara una base de datos.
 
 "La agencia desea guardar la siguiente información de los viajeros:
 dni, nombre, dirección y teléfono. De cada uno de los viajes que maneja la agencia interesa guardar el código de viaje, número de plazas, fecha en la que se realiza el viaje y otros datos. 
@@ -56,7 +56,7 @@ Un viajero puede realizar tantos viajes como desee con la agencia. Un viaje dete
 <br>
 
 ---
-<details><summary>Consulta 2</summary>
+<details><summary>Consultas Utilizando el Inner Join </summary>
 <p>
 
   #### Mostrar los viajeros con su determinado destino y su fecha en un rango X:
@@ -83,7 +83,7 @@ Un viajero puede realizar tantos viajes como desee con la agencia. Un viaje dete
 <br>
 
 ---
-<details><summary>Consulta 3</summary>
+<details><summary>Consultas Utilizando Varios Inner Join Y Aplicando El CTE</summary>
 <p>
 
 #### Consultar el título y la fecha de los libros prestados en un rango de fecha mediante procedimiento almacenado
