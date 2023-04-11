@@ -59,16 +59,24 @@ Un viajero puede realizar tantos viajes como desee con la agencia. Un viaje dete
 <details><summary>Consulta 2</summary>
 <p>
 
-#### Obtener el nombre de los autores, la cantidad de libros que escribio en un rango de fecha y el titulo de los libros
+  #### Mostrar los viajeros con su determinado destino y su fecha en un rango X:
 
 ```SQL
-
+  select vi.*, d.nombre
+  from destinos d
+  join viajes vi on d.id = vi.destino_id
+  Where vi.fecha  between "2023-04-02" and "2023-04-06";
 ```
+#### Consulta para mostrar el destino del viajero:
 
-<div>
-  <img src="images/Consulta2.png" alt="Consulta 2">
-</div>
-
+```SQL
+  SELECT *
+  FROM viajeros vi
+  JOIN destinos
+  ON vi.id = destinos.id
+  WHERE destinos.id = '2';
+```
+  
 </p>
 </details>
 
