@@ -25,22 +25,30 @@ Un viajero puede realizar tantos viajes como desee con la agencia. Un viaje dete
 <br>
 
 ---
-<details><summary>Consulta 1</summary>
+<details><summary>Consultas Basicas</summary>
 <p>
 
-#### Obtener el nombre del usuario que presto más libros, y la cantidad de veces que presto un libro
+#### Mostrar todos los viajes que tiene un determinado viajero:
 
 ```SQL
-  select nombre, count(p.idPrestar) as 'Cantidad de veces que presto un libro'
-  from usuarios u join prestar p on(u.idUsuario =p.idUsuario)
-  group by p.idUsuario
-  order by count(p.idPrestar) desc
-  limit 1;
+  select v.id, v.nombre
+  from viajeros v, viajes vi 
+  where v.id = vi.id ;
 ```
+#### Mostrar todos los viajes que tienen un determinado destino:
 
-<div>
-  <img src="images/Consulta1.png" alt="Consulta 1">
-</div>
+```SQL
+  select vi.*, d.nombre
+  from destinos d, viajes vi 
+  where d.id = vi.destino_id;
+```
+#### Mostrar todos los viajes que tienen un determinado Origen:
+
+```SQL
+  select vi.*, o.nombre
+  from origeness o, viajes vi 
+  where o.id = vi.origen_id;
+```
 
 </p>
 </details>
@@ -54,11 +62,7 @@ Un viajero puede realizar tantos viajes como desee con la agencia. Un viaje dete
 #### Obtener el nombre de los autores, la cantidad de libros que escribio en un rango de fecha y el titulo de los libros
 
 ```SQL
-  select a.nombre, count(e.idLibro) as Num_Lib, GROUP_CONCAT(l.titulo SEPARATOR ', ') as "Titulo del libro"
-  from autor a left join escribir e on (a.idAutor = e.idAutor)
-  right join libros l on (e.idLibro = l.idLibro) WHERE e.dia_mes_anio BETWEEN '2023-01-01' AND '2023-12-31'
-  group by a.idAutor
-  order by Num_Lib desc;
+
 ```
 
 <div>
