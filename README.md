@@ -2,6 +2,16 @@
 Trabajo colaborativo de la materia de Base de Datos.
 ---
 
+## Integrantes
+Abraham Josue Rojas Farelo
+---
+Stevinson Iguaran Deluque
+---
+Jose Alfredo Ruedas
+---
+Maria Elvira Doria 
+---
+
 <p>
 
 ### ¡Ejercicio 5!
@@ -17,7 +27,7 @@ Un viajero puede realizar tantos viajes como desee con la agencia. Un viaje dete
 
 
 <div>
-  <img src="https://github.com/abram550/Agencia-de-Viajes/blob/main/Imagenes/Captura%20de%20pantalla%202023-04-10%20215610.png" alt="Ejercicio">
+  <img src="https://github.com/abram550/Agencia-de-Viajes/blob/main/Imagenes/Tablas.png" alt="Ejercicio">
 </div>
 
 </p>
@@ -35,6 +45,11 @@ Un viajero puede realizar tantos viajes como desee con la agencia. Un viaje dete
   from viajeros v, viajes vi 
   where v.id = vi.id ;
 ```
+  
+<div>
+  <img src="https://github.com/abram550/Agencia-de-Viajes/blob/main/Imagenes/consulta%201.png" alt="Ejercicio">
+</div>
+  
 #### Mostrar todos los viajes que tienen un determinado destino:
 
 ```SQL
@@ -42,6 +57,11 @@ Un viajero puede realizar tantos viajes como desee con la agencia. Un viaje dete
   from destinos d, viajes vi 
   where d.id = vi.destino_id;
 ```
+  
+  <div>
+  <img src="https://github.com/abram550/Agencia-de-Viajes/blob/main/Imagenes/consulta%202.png" alt="Ejercicio">
+</div>
+  
 #### Mostrar todos los viajes que tienen un determinado Origen:
 
 ```SQL
@@ -49,7 +69,11 @@ Un viajero puede realizar tantos viajes como desee con la agencia. Un viaje dete
   from origeness o, viajes vi 
   where o.id = vi.origen_id;
 ```
-
+  
+<div>
+  <img src="https://github.com/abram550/Agencia-de-Viajes/blob/main/Imagenes/consulta%203.png" alt="Ejercicio">
+</div>
+  
 </p>
 </details>
 
@@ -67,6 +91,11 @@ Un viajero puede realizar tantos viajes como desee con la agencia. Un viaje dete
   join viajes vi on d.id = vi.destino_id
   Where vi.fecha  between "2023-04-02" and "2023-04-06";
 ```
+  
+ <div>
+  <img src="https://github.com/abram550/Agencia-de-Viajes/blob/main/Imagenes/consulta%204.png" alt="Ejercicio">
+</div>
+  
 #### Consulta para mostrar el destino del viajero:
 
 ```SQL
@@ -77,6 +106,10 @@ Un viajero puede realizar tantos viajes como desee con la agencia. Un viaje dete
   WHERE destinos.id = '2';
 ```
   
+  <div>
+  <img src="https://github.com/abram550/Agencia-de-Viajes/blob/main/Imagenes/consulta%205.png" alt="Ejercicio">
+</div>
+  
 </p>
 </details>
 
@@ -86,22 +119,32 @@ Un viajero puede realizar tantos viajes como desee con la agencia. Un viaje dete
 <details><summary>Consultas Utilizando Varios Inner Join Y Aplicando El CTE</summary>
 <p>
 
-#### Consultar el título y la fecha de los libros prestados en un rango de fecha mediante procedimiento almacenado
+#### Consulta basica utilizando el CTE
 
 ```SQL
-  delimiter //
-  CREATE procedure libros_x_fecha (IN fechaIni date, fechaFin date)
-  BEGIN
-   SELECT l.titulo, p.fecha_pres
-    FROM prestar p JOIN ejemplares e ON (p.idEjemplares = e.idEjemplares)
-    JOIN libros l ON (e.id_libros = l.idLibro)
-    WHERE p.fecha_pres BETWEEN fechaIni AND fechaFin
-    order by p.fecha_pres asc;
-  END//
+WITH viajeros_registrados AS (
+  SELECT dni, nombre, direccion, telefono
+  FROM viajeros
+  )
+  SELECT * FROM viajeros_registrados;
+```
+  <div>
+  <img src="https://github.com/abram550/Agencia-de-Viajes/blob/main/Imagenes/Consulta%206.png" alt="Ejercicio">
+</div>
+  
+  #### Consulta el nombre, el destino junto con su fecha:
+
+```SQL
+  select vi.id, v.viajeros_id,v.origen_id as Origen, v.destino_id as Destino , v.fecha
+  from viajeros vi
+  join viajes v  on (vi.id = v.id)
+  join destinos d on (v.id = d.id)
+  join origeness o on (v.id = o.id)
+  Where v.fecha  between "2023-04-02" and "2023-04-06";
 ```
 
 <div>
-  <img src="images/Consulta3.PNG" alt="Consulta 13">
+  <img src="https://github.com/abram550/Agencia-de-Viajes/blob/main/Imagenes/Consulta%207.png" alt="Ejercicio">
 </div>
 
 </p>
